@@ -13,7 +13,7 @@ export default function Navbar() {
             <div className='unordored-list'>
                 <ul>
                     <li><Link to="/home">Home</Link></li>
-                    <li><Link to="category">Student</Link></li>
+                    <li><Link to="/student">Student</Link></li>
                 </ul>
             </div>
         </div>
