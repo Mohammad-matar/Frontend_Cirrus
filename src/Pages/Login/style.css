@@ -1,0 +1,131 @@
+.login-main-container {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 2, 26);
+    height: 100vh;
+  }
+  
+  .form-login h2 {
+    margin-bottom: 40px;
+  }
+  .login-div-center {
+    background: rgb(0, 15, 58);
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #5ec4b3;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 20px;
+    color: whitesmoke;
+    text-align: center;
+    margin: 0px auto;
+    display: flex;
+  }
+  
+  .form-login {
+    display: flex;
+    width: 100%;
+  
+    flex-direction: column;
+    margin: 1rem;
+  }
+  
+  .form-login label {
+    align-self: start;
+  }
+  
+  .form-login ::placeholder {
+    color: rgb(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+  .wrapper {
+    display: table-cell;
+    height: 50%;
+    vertical-align: middle;
+    padding-top: 40px;
+  }
+  
+  .form-login input {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+  }
+  .buttons {
+    margin-left: -15rem;
+    margin-top: -1rem;
+  }
+  
+  .close {
+    background: #ff5c5c;
+    font-size: 9pt;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #e33e41;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .close:active {
+    border: 25px solid #ff5c5c;
+  }
+  
+  .minimize {
+    background: #ffbd4c;
+    font-size: 9pt;
+    line-height: 11px;
+    margin-left: 4px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #e09e3e;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .minimize:active {
+    border: 25px solid #ffbd4c;
+  }
+  
+  .zoom {
+    background: #00ca56;
+    font-size: 9pt;
+    line-height: 11px;
+    margin-left: 6px;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #14ae46;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .zoom:active {
+    border: 25px solid #14ae46;
+  }
+  
+  .Login-button {
+    border-radius: 5px;
+    text-shadow: 1px 1px 0px #211d21;
+    color: #ffffff;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 3px;
+    text-decoration: none;
+    border: none;
+    width: 10rem;
+    margin-left: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .Login-button:hover {
+    background-color: #5ec4b3;
+    transition: 0.7s;
+  }
+  
+  .container__errorMessage {
+    font-size: 2rem;
+    color: red;
+  }
+  

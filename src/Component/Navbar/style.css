@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(0, 15, 58);
+}
+.app-icon {
+  color: white;
+  font-size: 3rem;
+  margin-left: 20px;
+  width: 35%;
+}
+
+.unordored-list ul {
+  display: flex;
+  list-style: none;
+  padding: 5px;
+  justify-content: center;
+  padding-right: 4rem;
+  font-size: 20px;
+  flex-grow: 1;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #211d21;
+}
+.unordored-list:hover {
+  color: #5ec4b3;
+}
+
+li {
+  margin-left: 5rem;
+  color: white;
+}
+
+a {
+  color: linear-gradient(90deg, #9b77e7, #1600a0);
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
