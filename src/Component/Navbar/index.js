@@ -14,6 +14,7 @@ export default function Navbar() {
                 <ul>
                     <li><Link to="/home">Home</Link></li>
                     <li><Link to="/student">Student</Link></li>
+                    <li><Link to="/homework">Homework</Link></li>
                 </ul>
             </div>
         </div>

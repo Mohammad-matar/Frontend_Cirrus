@@ -4,6 +4,7 @@ import Login from './Pages/Login';
 import Home from './Pages/Home'
 import Student from './Pages/Student';
 import './App.css';
+import Homework from './Pages/HomeWork';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/student" element={<Student />} />
+        <Route path="/homework" element={<Homework />} />
       </Routes>
     </BrowserRouter>
   );
