@@ -40,9 +40,13 @@ export default function Login() {
                                     }}
                                 />
                             </span>
+                            <button className="signup-button">
+                                Sign Up
+                            </button>
                             <button className="Login-button">
                                 Login
                             </button>
+
                         </form>
                     </div>
                 </div>
