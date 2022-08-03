@@ -9,20 +9,23 @@ import './style.css';
 import axios from 'axios';
 
 export default function Student() {
-    const [student, setStudent] = useState([]);
+    const [student, setStudent] = useState({});
+    const [students, setStudents] = useState([]);
+
 
     const handleChange = (e) => {
-        setStudent({ [e.target.name]: e.target.value });
+        setStudent({ ...student, [e.target.name]: e.target.value });
+        console.log(student)
     };
 
     useEffect(() => {
         getStudents()
-    }, [student]);
+    }, []);
 
     const getStudents = () => {
         axios.get('http://localhost:8000/api/student')
             .then((res) => {
-                setStudent(res.data.data)
+                setStudents(res.data.data)
             })
             .catch((err) => console.log(err))
     }
@@ -37,10 +40,11 @@ export default function Student() {
             .catch((err) => console.log(err));
     };
 
-    const addStudent = () => {
-        axios
-            .post(`http://localhost:8000/api/student`)
+    const addStudent = async () => {
+        await axios
+            .post(`http://localhost:8000/api/student`, student)
             .then((res) => {
+                console.log(res);
                 setStudent({});
                 alert("Student added successfully");
                 getStudents()
@@ -65,6 +69,7 @@ export default function Student() {
                         <th>Date of Birth</th>
                         <th>Class</th>
                         <th> Gender</th>
+
                         <th>
                             <ReactCircleModal
 
@@ -92,38 +97,55 @@ export default function Student() {
                                             <div className='mui5-textfield-input'>
                                                 <TextField
                                                     required
-                                                    id="outlined-required"
+                                                    id="name"
                                                     label="* Name"
+                                                    name='name'
                                                     onChange={handleChange}
                                                 />
                                                 <TextField
                                                     required
                                                     id="outlined-required"
                                                     label="* email"
+                                                    name='email'
+                                                    onChange={handleChange}
                                                 />
                                                 <TextField
                                                     required
-                                                    id="outlined-required"
+                                                    id="password"
+                                                    label="* password"
+                                                    type={"password"}
+                                                    name='password'
+                                                    onChange={handleChange}
+                                                />
+                                                <TextField
+                                                    required
+                                                    id="date_of_birth"
                                                     label="* Date Of Birth"
+                                                    name='date_of_birth'
+                                                    onChange={handleChange}
                                                 />
                                                 <TextField
                                                     required
-                                                    id="outlined-required"
+                                                    id="class"
                                                     label="* Class"
+                                                    name="class"
+                                                    onChange={handleChange}
                                                 />
                                                 <TextField
                                                     required
-                                                    id="outlined-required"
+                                                    id="gender"
                                                     label="* Gender"
+                                                    name='gender'
+                                                    onChange={handleChange}
                                                 />
 
                                             </div>
                                         </Box>
                                         <div className='onclick-modal-button'>
-                                            <button onClick={addStudent} >
+                                            <button onClick={addStudent}>
                                                 Sumbit
                                             </button>
-                                            <button onClick={onClick} >
+                                            <button onClick={onClick}>
                                                 Cancel
                                             </button>
                                         </div>
@@ -136,7 +158,7 @@ export default function Student() {
                     </tr>
                 </thead>
                 <tbody>
-                    {student.map((student, index) => {
+                    {students.map((student, index) => {
                         return (
                             <tr className="active-row" key={index}>
                                 <td>{student.id}</td>
