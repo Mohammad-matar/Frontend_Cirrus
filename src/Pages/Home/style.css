@@ -19,6 +19,7 @@
 .home-title {
   display: flex;
   justify-content: center;
+  color: rgb(0, 15, 58);
 }
 
 .styled-table {

@@ -15,3 +15,27 @@
   display: flex;
   justify-content: space-around;
 }
+
+.onclick-modal-button {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+.onclick-modal-button button {
+  background-color: rgb(0, 15, 58);
+  color: white;
+  font-size: 20px;
+  border: 0;
+  border-radius: 5px;
+  width: 30%;
+  padding: 11px;
+  font-weight: bold;
+}
+.onclick-modal-button button:hover {
+  background-color: #30f1f8;
+  color: rgb(0, 15, 58);
+}
+/* .mui5-textfield-input  {
+  display: "flex";
+  flex-direction: "column";
+} */

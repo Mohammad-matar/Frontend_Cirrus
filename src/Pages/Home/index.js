@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../Component/Navbar';
 import { AiOutlineEdit } from 'react-icons/ai'
 import { RiDeleteBin6Line } from "react-icons/ri"
 import './style.css';
+import axios from 'axios';
 
 export default function Home() {
+
+    const [teacher, setTeacher] = useState([]);
+
+    useEffect(() => {
+        getTeachers();
+    }, [teacher]);
+    const getTeachers = () => {
+        axios.get('http://localhost:8000/api/teacher')
+            .then((res) => {
+                setTeacher(res.data.data)
+            })
+            .catch((err) => console.log(err));
+    }
+
     return (
         <div>
             <Navbar />
             <div className='home-title'>
                 <h1>
-                    <u><i>Teacher Table</i></u>
+                    <u><i>Teachers Table</i></u>
                 </h1>
             </div>
             <table className="styled-table">
@@ -19,25 +34,22 @@ export default function Home() {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Phone Number</th>
+                        <th>Date Of Birthday</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="active-row">
-                        <td>1</td>
-                        <td>Zaynab</td>
-                        <td>zaynab.abdalnabi@gmail.com</td>
-                        <td>71-728-733</td>
 
+                    {teacher.map((item, index) => {
+                        return (
+                            <tr className="active-row" key={index}>
+                                <td>{item.id}</td>
+                                <td>{item.name}</td>
+                                <td>{item.email}</td>
+                                <td>{item.date_of_birth}</td>
+                            </tr>
+                        )
 
-                    </tr>
-                    <tr className="active-row">
-                        <td>2</td>
-                        <td>Hadi</td>
-                        <td>hadi.hayek@gmail.com</td>
-                        <td>71-728-733</td>
-
-                    </tr>
+                    })}
 
                 </tbody>
             </table>
