@@ -4,9 +4,13 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { RiDeleteBin6Line } from "react-icons/ri"
 import ReactCircleModal from 'react-circle-modal'
 import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/styles';
 import './style.css';
 import axios from 'axios';
+import { GiConsoleController } from 'react-icons/gi';
 
 export default function Student() {
     const [student, setStudent] = useState({});
@@ -48,6 +52,37 @@ export default function Student() {
                 setStudent({});
                 alert("Student added successfully");
                 getStudents()
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const [newstudent, setnewStudent] = useState({});
+    const [open, setOpen] = useState(false);
+    const [openEdit, setOpenEdit] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleOpenEdit = () => setOpenEdit(true);
+    const handleClose = () => setOpen(false);
+    // Get the Data on Edit
+    const getStudentsById = (id) => {
+        axios
+            .get(`http://localhost:8000/api/student/${id}`)
+            .then((res) => {
+                const { name, email, date_of_birth, gender } = res.data;
+                console.log(res)
+                setnewStudent({ name, email, date_of_birth, gender });
+            })
+            .catch((err) => console.log(err));
+    }
+
+    const updatenewStudent = () => {
+        axios
+            .put(`http://localhost:8000/api/student/${newstudent.id}`, newstudent)
+            .then((res) => {
+                handleClose();
+                setnewStudent({});
+                getStudents();
+                alert("Student updated successfully");
             })
             .catch((err) => console.log(err));
     };
@@ -141,6 +176,7 @@ export default function Student() {
 
                                             </div>
                                         </Box>
+
                                         <div className='onclick-modal-button'>
                                             <button onClick={addStudent}>
                                                 Sumbit
@@ -169,7 +205,35 @@ export default function Student() {
                                 <td>{student.gender}</td>
 
                                 <td className='edit-delet-icon'>
-                                    <AiOutlineEdit />
+                                    <AiOutlineEdit
+                                        onClick={() => {
+                                            handleOpen();
+                                            getStudentsById(student.id);
+                                            // updatenewStudent();
+                                        }} />
+                                    <Modal
+                                        open={open}
+                                        onClose={handleClose}
+                                        aria-labelledby="modal-modal-title"
+                                        aria-describedby="modal-modal-description"
+                                    >
+                                        <Box sx={style}>
+                                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                Edit your Customer
+                                            </Typography>
+                                            <br />
+                                            <TextField id="filled-basic" label="Name" name="name" variant="filled" defaultValue={newstudent.name} onChange={handleChange} />
+                                            <br />
+                                            <br />
+                                            <TextField id="filled-basic" label="address" name="address" variant="filled" defaultValue={newstudent.address} onChange={handleChange} />
+                                            <br />
+                                            <br />
+                                            <TextField id="filled-basic" label="Phone Number" name="phone_number" variant="filled" defaultValue={newstudent.phone_number} onChange={handleChange} />
+                                            <br />
+                                            <br />
+                                            <Button variant="contained" onClick={setnewStudent} >Update Data</Button>
+                                        </Box>
+                                    </Modal>
                                     <tr>
                                         <RiDeleteBin6Line
                                             onClick={() => deleteStudent(student.id)} />
