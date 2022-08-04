@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+## Project Description:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The requirement for this project were to include Teacher - Student - Homework CRUDs
 
-## Available Scripts
+## Used Languages/Library
 
-In the project directory, you can run:
+implementing React and Material-UI for the Front Side and Laravel for the back whole developing my data base with MySQL.
 
-### `npm start`
+## Pull The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To pull this project :https://github.com/Mohammad-matar/Frontend_Cirrus.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Run the app
 
-### `npm test`
+To install the all packages use:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```cli
+npm install
+```
 
-### `npm run build`
+To run the Frontend and backend parts:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```cli
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Testing CRUD
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Teacher Routes
 
-### `npm run eject`
+**GET** `http://localhost:8000/api/teacher`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Sample **Response**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+{
+  "id": 2,
+  "name": "Mohamad Matar",
+  "email": "moe.matar1998@gmail.com",
+  "password": "12345678",
+  "date_of_birth": "2222-01-02",
+  "phone_number": "71728733",
+  "gender": "male",
+  "created_at": "2022-08-03T19:02:22.000000Z",
+  "updated_at": "2022-08-03T19:02:22.000000Z"
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**GET BY ID**`http://localhost:8000/api/teacher/1`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+It Will get the teacher by his ID
 
-## Learn More
+## Add A Teacher
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**POST**`http://localhost:8000/api/teacher`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Response** Will add a new Teacher
 
-### Code Splitting
+```json
+{
+  "status": 200,
+  "message": "New teacher is added",
+  "data": {
+    "name": "Mohamad Matar",
+    "email": "moe.matar1998@gmail.com",
+    "password": "12345678",
+    "date_of_birth": "2222-01-02",
+    "phone_number": "71728733",
+    "gender": "male",
+    "updated_at": "2022-08-03T19:02:22.000000Z",
+    "created_at": "2022-08-03T19:02:22.000000Z",
+    "id": 2
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**PUT**`http://localhost:8000/api/teacher/1`
 
-### Analyzing the Bundle Size
+IT will update the teacher from his id
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**DELETE**`http://localhost:8000/api/teacher/1`
 
-### Making a Progressive Web App
+It will delete the teacher from his id
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Student
 
-### Advanced Configuration
+## Creating account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**POST**`http://localhost:8000/api/student/signup`
 
-### Deployment
+It will register an account with getting a token
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```json
+{
+  "user": {
+    "name": "Mohamad",
+    "email": "matar99@gmail.com",
+    "password": "$2y$10$JanRYTsAdUWu.xaDcZjK9Oc1Q7/3X38xC5sy8ynfAyc3A6EwKXbey",
+    "date_of_birth": "1999-01-01",
+    "phone_number": "71728733",
+    "class": "eb8",
+    "gender": "male",
+    "updated_at": "2022-08-04T08:17:47.000000Z",
+    "created_at": "2022-08-04T08:17:47.000000Z",
+    "id": 4
+  },
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3N0dWRlbnQvcmVnaXN0ZXIiLCJpYXQiOjE2NTk2MDEwNjcsImV4cCI6MTY1OTYwNDY2NywibmJmIjoxNjU5NjAxMDY3LCJqdGkiOiJDYlI1TG1zUzdTcFlUZmJuIiwic3ViIjoiNCIsInBydiI6IjljNDI5ZTZhNjBjZDUyODU0NzNmMmM4YmM3MDFlYzA5NDhkZjRkOGMifQ.xiPCM4zXF3AVU4wniciDE5luenl1IxFN91kooPzIqOE"
+}
+```
 
-### `npm run build` fails to minify
+**GET** `http://localhost:8000/api/student`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sample **Response**
+
+```json
+{
+  "id": 2,
+  "name": "Mohamad Matar",
+  "email": "moe.matar1998@gmail.com",
+  "password": "12345678",
+  "date_of_birth": "2222-01-02",
+  "phone_number": "71728733",
+  "gender": "male",
+  "created_at": "2022-08-03T19:02:22.000000Z",
+  "updated_at": "2022-08-03T19:02:22.000000Z"
+}
+```
+
+**GET BY ID**`http://localhost:8000/api/student/1`
+
+It Will get the teacher by his ID
+
+## Add A Student
+
+**POST**`http://localhost:8000/api/student`
+
+**Response** Will add a new student
+
+```json
+{
+  "status": 200,
+  "message": "New student is added",
+  "data": {
+    "name": "Mohamad Matar",
+    "email": "moe.matar1998@gmail.com",
+    "password": "12345678",
+    "date_of_birth": "2222-01-02",
+    "phone_number": "71728733",
+    "gender": "male",
+    "updated_at": "2022-08-03T19:02:22.000000Z",
+    "created_at": "2022-08-03T19:02:22.000000Z",
+    "id": 2
+  }
+}
+```
+
+**PUT**`http://localhost:8000/api/student/1`
+
+IT will update the student from his id
+
+**DELETE**`http://localhost:8000/api/student/1`
+
+It will delete the student from his id
