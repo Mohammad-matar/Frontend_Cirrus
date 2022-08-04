@@ -12,17 +12,28 @@ To pull this project :https://github.com/Mohammad-matar/Frontend_Cirrus.git
 
 ## How to Run the app
 
+## Run the react
+
 To install the all packages use:
 
 ```cli
 npm install
 ```
 
-To run the Frontend and backend parts:
+To run the Frontend:
 
 ```cli
 npm start
 ```
+
+## Run the backend
+
+**Should turn on the controller pannel like :XAMP:** then run the laravel
+
+````cli
+php artisan serve
+```
+
 
 ## Testing CRUD
 
@@ -44,7 +55,7 @@ Sample **Response**
   "created_at": "2022-08-03T19:02:22.000000Z",
   "updated_at": "2022-08-03T19:02:22.000000Z"
 }
-```
+````
 
 **GET BY ID**`http://localhost:8000/api/teacher/1`
 
