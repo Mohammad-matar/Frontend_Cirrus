@@ -172,3 +172,17 @@ IT will update the student from his id
 **DELETE**`http://localhost:8000/api/student/1`
 
 It will delete the student from his id
+
+## ROUTES In Frontend
+
+```cli
+<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/student" element={<Student />} />
+        <Route path="/homework" element={<Homework />} />
+      </Routes>
+    </BrowserRouter>
+```
